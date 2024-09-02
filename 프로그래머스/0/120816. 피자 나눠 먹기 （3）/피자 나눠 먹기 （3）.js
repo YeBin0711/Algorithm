@@ -5,10 +5,7 @@ function solution(s, n) {
     }
     return i;
 }
-/*
-    for (let i = 1; i<100; i++)
-        if(s*i<n) {
-           return i+1;
-        }
-    
-}*/
+//올림 사용
+function solution2(slice, n) {
+    return Math.ceil(n / slice)
+}
