@@ -13,3 +13,17 @@ function solution(n) {
     }
     return answer;
 }
+
+//다른 코드
+const solution2 = (n) => {
+    let piece = 6
+
+    while(true) {
+        if (piece % n === 0) {
+            break
+        }
+        piece += 6
+    }
+
+    return piece / 6
+}
