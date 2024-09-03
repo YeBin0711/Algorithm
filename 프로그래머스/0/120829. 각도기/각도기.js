@@ -14,3 +14,8 @@ function solution(angle) {
     }
     return answer;
 }
+
+//필터 사용
+function solution2(angle) {
+    return [0, 90, 91, 180].filter(x => angle>=x).length;
+}
