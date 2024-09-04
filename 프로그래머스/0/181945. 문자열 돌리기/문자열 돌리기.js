@@ -13,4 +13,10 @@ rl.on('line', function (line) {
     for(let i = 0; i<str.length; i++){
         console.log(str[i]);
     }
+    /* 다른 작성의 for문
+    for(let i of str){
+        console.log(i)
+    }
+    
+    */
 });
