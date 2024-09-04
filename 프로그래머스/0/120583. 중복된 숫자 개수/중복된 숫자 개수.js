@@ -7,3 +7,8 @@ function solution(array, n) {
     }
     return answer;
 }
+
+//filter 사용
+function solution2(array, n) {
+    return array.filter(v=>v===n).length;
+}
