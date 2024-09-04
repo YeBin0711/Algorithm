@@ -7,3 +7,9 @@ function solution(array, height) {
     }
     return answer;
 }
+
+//filter 사용
+function solution2(array, height) {
+    var answer = array.filter(item => item > height);
+    return answer.length;
+}
