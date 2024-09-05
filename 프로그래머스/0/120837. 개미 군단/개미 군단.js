@@ -11,3 +11,8 @@ function solution(hp) {
     }
     return x+y+z;
 }
+
+//변수로 두지 않고 그대로 식 안에 넣어서 작성하기
+function solution2(hp) {
+    return Math.floor(hp/5)+Math.floor((hp%5)/3)+(hp%5)%3;
+}
