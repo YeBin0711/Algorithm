@@ -1,14 +1,9 @@
 function solution(numbers) {
-    let answer = Number.MIN_SAFE_INTEGER;
-    
-    for (let i = 0; i < numbers.length; i++) {
-        for (let j = i + 1; j < numbers.length; j++) {
-            let k = numbers[i] * numbers[j];
-            if (k > answer) {
-                answer = k;
-            }
+    var answer = Number.MIN_SAFE_INTEGER;
+    for(let i = 1; i <numbers.length; i++){
+        for (let j = 0; j<i; j++){
+            answer < numbers[i]*numbers[j] ? answer = numbers[i]*numbers[j] : answer;
         }
     }
-    
     return answer;
 }
