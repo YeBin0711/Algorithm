@@ -5,52 +5,39 @@ const readline = require('readline').createInterface({
 
 let input = [];
 
+function getScore(grade) {
+    switch(grade) {
+        case 'A+': return 4.5;
+        case 'A0': return 4.0;
+        case 'B+': return 3.5;
+        case 'B0': return 3.0;
+        case 'C+': return 2.5;
+        case 'C0': return 2.0;
+        case 'D+': return 1.5;
+        case 'D0': return 1.0;
+        case 'F': return 0.0;
+        default: return 0.0;
+    }
+}
+
 readline.on('line', function(line) {
     input.push(line.split(' '));
-}).on('close', function(){
- 
-    let totalCredit = 0; //총 학점
-    for(let i = 0; i<input.length; i++){
-        if(input[i][2] !== 'P'){
-           totalCredit += Number(input[i][1]);
-        }
-    }
+}).on('close', function() {
 
-    let totalScore = 0; //총 점수
-    for(let i = 0; i<input.length;i++){
-    switch(input[i][2]){
-        case 'A+':
-        totalScore+= 4.5*Number(input[i][1]);
-            break;
-        case 'A0':
-        totalScore+= 4.0*Number(input[i][1]);
-            break;
-        case 'B+':
-        totalScore+= 3.5*Number(input[i][1]);
-            break;
-        case 'B0':
-        totalScore+= 3.0*Number(input[i][1]);
-            break;
-        case 'C+':
-        totalScore+= 2.5*Number(input[i][1]);
-            break;
-        case 'C0':
-        totalScore+= 2.0*Number(input[i][1]);
-            break;
-        case 'D+':
-        totalScore+= 1.5*Number(input[i][1]);
-            break;
-        case 'D0':
-        totalScore+= 1.0*Number(input[i][1]);
-            break;
-        case 'F':
-        totalScore += 0.0*Number(input[i][1]);
-            break;
-        default:
-            totalScore;
+    let totalCredit = 0;  // 총 학점
+    let totalScore = 0;   // 총 점수
+
+    input.forEach((subject) => {
+        const [name, credit, grade] = subject;
+        const creditValue = Number(credit);
+
+        if (grade !== 'P') {
+            totalCredit += creditValue;
+            totalScore += getScore(grade) * creditValue;
         }
-    }
-    let answer = Number(totalScore/totalCredit);
-    console.log(answer);
+    });
+
+    const answer = totalScore / totalCredit;
+    console.log(answer.toFixed(6));
     process.exit();
 });
