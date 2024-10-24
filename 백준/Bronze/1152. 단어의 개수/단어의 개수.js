@@ -6,7 +6,7 @@ const readline = require('readline').createInterface({
 let input = [];
 
 readline.on('line', function(line) {
-    input = line.trim().split(/\s+/);
+    input = line.trim().split(' ');
 }).on('close', function(){
     console.log(input[0] === '' ? 0 : input.length);
     process.exit();
